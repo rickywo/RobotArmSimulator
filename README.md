@@ -1,6 +1,6 @@
 # Coding Test
 
-##REPORT
+## REPORT
 
 - PLACE will place the robot above the plate in position X,Y. 
 - The origin (1,1) can be considered to be the well in at the SOUTH WEST corner of the grid.
@@ -15,11 +15,12 @@
 - Provide test data to exercise the application. Test data should include priming the plate with wells that are EMPTY or FULL.
 
 
-##Constraints:
+## Constraints:
 - The toy robot must not overshoot  the table during movement. This also includes the initial placement of the toy robot. 
 - Any move that would cause the robot to fall must be ignored.
 
-##Example Input and Output:
+## Example Input and Output:
+    
     a)
     PLACE 1,1
     MOVE N
