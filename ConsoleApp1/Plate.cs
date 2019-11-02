@@ -25,12 +25,16 @@ namespace ConsoleApp1
         private Vec _arm_pos;
         // The indicator that indicates if place command is performed or not
         private bool _initialized;
+
+        private RoboticContext _context;
         
         // 2d array holds wells status in bool
         bool[,] _wells;
 
         public Plate(int n, int m)
         {
+            // Should inject context here
+            _context = new RoboticContext();
             _dimension = new Vec(n, m);
             _wells = new bool[n, m];
             _initialized = false;
@@ -50,6 +54,10 @@ namespace ConsoleApp1
             {
                 throw new System.ArgumentException("Coordinates out of range");
             }
+
+            var cmdLog = new CommandLog {  Command= $"place {x}, {y}"};
+            _context.CommandLogs.Add(cmdLog);
+            _context.SaveChanges();
         }
 
         // Move robot arm to any direction
