@@ -2,15 +2,17 @@
 using ConsoleApp1;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ConsoleApp1.Migrations
 {
     [DbContext(typeof(RoboticContext))]
-    partial class RoboticContextModelSnapshot : ModelSnapshot
+    [Migration("20191102121834_update_command_type")]
+    partial class update_command_type
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,12 +22,12 @@ namespace ConsoleApp1.Migrations
 
             modelBuilder.Entity("ConsoleApp1.CommandLog", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CommandLogId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Type");
 
-                    b.HasKey("Id");
+                    b.HasKey("CommandLogId");
 
                     b.ToTable("CommandLogs");
                 });

@@ -55,7 +55,7 @@ namespace ConsoleApp1
                 throw new System.ArgumentException("Coordinates out of range");
             }
 
-            var cmdLog = new CommandLog {  Command= $"place {x}, {y}"};
+            var cmdLog = new CommandLog { Type = CommandType.PLACE_ROBOT };
             _context.CommandLogs.Add(cmdLog);
             _context.SaveChanges();
         }
@@ -72,6 +72,24 @@ namespace ConsoleApp1
             if (CheckInsideRange(tempPos))
             {
                 _arm_pos = tempPos;
+                var cmdLog = new CommandLog();
+                switch (direction)
+                {
+                    case Direction.n:
+                        cmdLog.Type = CommandType.MOVE_NORTH;
+                        break;
+                    case Direction.e:
+                        cmdLog.Type = CommandType.MOVE_EAST;
+                        break;
+                    case Direction.w:
+                        cmdLog.Type = CommandType.MOVE_WEST;
+                        break;
+                    case Direction.s:
+                        cmdLog.Type = CommandType.MOVE_SOUTH;
+                        break;
+                }
+                _context.CommandLogs.Add(cmdLog);
+                _context.SaveChanges();
             }
         }
 
